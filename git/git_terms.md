@@ -1,6 +1,5 @@
 What is git?
-
-A stupid content tracker. Git is fundamentally a content-addressable filesystem with a VCS user interface written on top of it.
+> A stupid content tracker. Git is fundamentally a content-addressable filesystem with a VCS user interface written on top of it.
 
 What does a content-addressable filesystem mean? 
 
