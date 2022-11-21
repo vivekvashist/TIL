@@ -2,12 +2,10 @@ What is git?
 > A stupid content tracker. Git is fundamentally a content-addressable filesystem with a VCS user interface written on top of it.
 
 What does a content-addressable filesystem mean? 
-
-This means that at the core of Git is a simple key-value data store i.e you can insert any kind of content into a Git repository, for which Git will hand you back a unique key which you can use later to reterive that content.
+> This means that at the core of Git is a simple key-value data store i.e you can insert any kind of content into a Git repository, for which Git will hand you back a unique key which you can use later to reterive that content.
 
 What is `.git` repository?
-
-Is a hidden directory where Git contains all information required for version control.
+ > Is a hidden directory where Git contains all information required for version control.
 `.git` is initilaized by `git init`. `.git` contains all the inforamtion required for version control.
 `.git` contains:
 - 4 files:
@@ -29,13 +27,11 @@ Is a hidden directory where Git contains all information required for version co
     - `.git/objects/info` -
 
 How does Git store content? 
-
-As a single file per piece of content, named with the `SHA-1` checksum of the content and its header.The subdir is named with first two characters of the `SHA-1` and the filname is the remaining 38 characters.
+> As a single file per piece of content, named with the `SHA-1` checksum of the content and its header.The subdir is named with first two characters of the `SHA-1` and the filname is the remaining 38 characters.
 All content is stored as `tree` or `blob` objects, `trees` corresponding to UNIX directories entries and `blobs` corresponding more or less to `inodes` or file contents.
 
 What are plumbing commands?
-
-Low level commands that were designed to be chanined UNIX-style or called from scripts.
+> Low level commands that were designed to be chanined UNIX-style or called from scripts.
 ```python
 git help git
 git help -av
@@ -45,8 +41,7 @@ What are porcelain commands?
 User friendly commands.
 
 What is a branch? 
-
-A `branch` is a simple pointer or reference to the head of a line of work.
+> A `branch` is a simple pointer or reference to the head of a line of work.
 
 What is a working tree? 
 
@@ -63,9 +58,8 @@ What is a remote repository?
 What is a bare repository?
 
 What is a blob object?
-
-Blob means a sequence of bytes.
-A Git blob (binary large object) is the object type used to store the contents of each file in a repository.
+> Blob means a sequence of bytes.
+> A Git blob (binary large object) is the object type used to store the contents of each file in a repository.
 
 What is the index?
 
