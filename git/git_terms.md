@@ -2,7 +2,7 @@ What is git?
 > A stupid content tracker. Git is fundamentally a content-addressable filesystem with a VCS user interface written on top of it.
 
 What does a content-addressable filesystem mean? 
-> This means that at the core of Git is a simple key-value data store i.e you can insert any kind of content into a Git repository, for which Git will hand you back a unique key which you can use later to reterive that content.
+> This means that at the core of Git is a simple key-value data store i.e you can insert any kind of content into a Git repository, for which Git will hand you back a unique key which you can use later to reterive that content. Method of storing information so that it may be retrieved based on its content.
 
 What is `.git` repository?
  > Is a hidden directory where Git contains all information required for version control.
@@ -43,8 +43,11 @@ What is a branch?
 > A `branch` is a simple pointer or reference to the head of a line of work.
 
 What is a working tree? 
+> Equivalent to `working directory`
 
 What is a working directory? 
+> Think of working directory as a `sandbox`, where you can try changes out before committing them to your staging area(index) and then to history.
+> Working directory (also commonnly referred to as working tree).The other two trees `index` and `HEAD` store their content in an efficient but inconvenient manner inside `.git` folder. The working directory unpacks them into actual files, which makes it much easier to edit them.
 
 What is worktree?
 
@@ -60,6 +63,8 @@ What is a blob object?
 > Blob means a sequence of bytes. A Git blob (binary large object) is the object type used to store the contents of each file in a repository.
 
 What is the index?
+> `index` is your proposed next commit.This is also refered to as staging area as this is what git looks at when you run `git commit`
+> Git polulates this index with a list of all file contents that werrre last checked out into your working directory and what they looked like when they were orginally checked out.When you replace some of those files with new versions of them, and `git commit` converts that into the tree for new commit.`git ls-files -s` shows what your index currently looks like.The index is not technically a tree structure - its implementd as a flattened manifest but for our purposes its close enough.
 
 What is a tag object?
 > `tag` object is fourth object type in Git. A `tag` object is very much like `commit` object - it contains a tagger, a date, a message and a pointer. The main difference is that `tag` object generally points to a `commit` rather than a `tree`. Its like a `branch` reference, but it never moves - it always points to the same `commit` but gives it a friendlier name.
@@ -72,7 +77,8 @@ What is master?
 What is main?
 
 What is HEAD?
-> `HEAD` file is a symbolic `reference` to the `branch` you're currently on.
+> `HEAD` file is a symbolic `reference` to the `branch` you're currently on. `HEAD` is a pointer to the current branch reference,which is in turn a pointer to the last commit made on that branch.That means `HEAD` will be the parent of the next commit that is created.
+> Think of `HEAD` as the snapshot of your last commit on that branch.
 
 What is head?
 
@@ -88,10 +94,13 @@ What is head (named reference)?
 What is a head ref?
 
 What is checkout?
+> When you checkout a branch, it changes `HEAD` to point to the new branch ref, populates your `index` with the snapshot of that `commit`,then copies the contents of the `index` into your `working directory`.
 
-What is commit-ish?
+What is commitish?
+> Short form for commit hashes.
 
-What is tree-ish?
+What is treeish?
+> Short form for tree hashes.
 
 What is detached HEAD?
 
@@ -123,6 +132,12 @@ What is refspec?
 What is remote-tracking branch?
 
 What is tree?
+> Think of Git being a content manager of three different trees. Trees here means collection of files not specifically the data structure.
+
+What are the three trees (not tree object/data structure) git manages and manipulates? 
+> `HEAD` - last commit snapshot, next parent
+> `index` - proposed next commit snapshot
+> `working directory` - sandbox
 
 What is a tree object?
 > Solves the problem of storing the filename and also allows you to store a group of files together. A single `tree` object contains one or more entries, each of which is a the `SHA-1` hash or a `blob` or `subtree` with its associated mode, type and filename.
@@ -212,3 +227,16 @@ How does git pack objects?
 > Git looks for files that are named and sized similarly, and stores just the deltas from one version of the file to the next.
 > Run `git verify-pack` to look into a packfile
 > Check out that the second version of the file is the one that is stored intact, whereas the original version is stored as a delta - this is becausse you're most likely to need faster access to the most recent version of the file.
+
+What is `origin main` vs `origin/main`?
+
+What is `origin master` vs `origin/master`?
+
+What is a SHA-1 hash?
+> Individual fingerprint for content.
+
+What is fast-forward merge?
+>
+
+What is non fast-forward merge?
+>
