@@ -1,31 +1,67 @@
 What is git?
-> A stupid content tracker. Git is fundamentally a content-addressable filesystem with a VCS user interface written on top of it.
+> A stupid content tracker. Git is fundamentally a content-addressable filesystem with a VCS user interface written on top of it.Git is a Distributed Version Control System(DVCS).Git is not a delta-based version control, Git thinks of its data more like a series of snapshots of a miniature filesystem.
+> Git thinks about its data more like a `stream of snapshots`
+> Git basically takes a picture of what all your files look like at that moment and stores a `reference` to that snapshot.To be efficient, if files have not changed, Git doesn't store the file again, just a link to the previous identical file it has already stored.
+> Nearly every opteration in Git is local.
+> Everything in git is checksumed before it is stored and then referred to by that checksum.This means, it is impossible to change the contents of any file/directory without Git knowing about it.You can't lose information in transit or get file corruption without Git being able to detect it.The mechanism that Git uses for this checksumming is called SHA-1 hash.This has is calculated based on the contents of a file or directory structure in Git.
+> Git stores everything in its database not by file name but by the hash value of its contents.
+> Nearly all git actions only add data to git database.It is hard to get the system to do anything that is not undoable or to make it erase data in anyway. Once you `commit` a snapshot into Git it is very difficutlt to lose, especially if you regularly push your database to another repository.
+
+What are the 3 main states that files can reside in Git?
+> `modified` - means you have changed the file but have not committed it to your database yet.If it was changed since it was checked out but has not been staged, it is modified.
+> `staged` - means you have maked a modified file in its current version to go into your next commit snapshot. If it has been modified and was added to the staging area it is staged.
+> `committed` - means that the data is safely stored in your local database. If a particular version of a file is in the Git directory, it is considered committed.
+
+What are the 3 main sections of a Git project?
+> `working tree` - is a single checkout of one version of the project.These files are pulled out of the compressed database in the Git directory and placed on disk for you to use of modify.
+> `staging area` - is a file,(technical name is `index`) contained in your Git directory, that stores information about what will go into your next commit.
+> `Git directory` - is where Git stores the metadata and object database for your project.This is what gets copied when you `clone` a repository from another computer.
+
+What is the basic git workflow?
+> 1. You modifiy files in your `working tree`
+> 2. You selectively stage just those changes you want to be part of your next commit, which adds only those changes to the staging area.
+> 3. You do a commit, which takes the files as they are in the staging area and stores that snapshot permanently in your Git repository.
+
+What are the 3 places where `git config` variables can be stored? 
+> `[path]/etc/gitconfig` file - contains values applied to every user on the system and all their repositories.`git config --system`
+> `~/.gitconfig` or `~/.config/git/cofnig` file - personal git values to you, the user.`git config --global` (affects all of the repositories you work with on your system.
+> `config` file - inside the Git directory this is specific to that single repository. `git config --local`
+
+> What is the command to view all settings and where they are coming from ? 
+> `git config --list --show-origin`
+
+> How do you query Git as to the origin for a value to tel you which configuration file had the final say in setting that value?
+> `git cofnig --show-origin rerer.autoUpdate`
+
+What is a DVCS?
+> clients fully mirror the repository including its full history. Every clone is really a full backup of all the data. 
+
+What is a patch?
+> Differences between files.
 
 What does a content-addressable filesystem mean? 
 > This means that at the core of Git is a simple key-value data store i.e you can insert any kind of content into a Git repository, for which Git will hand you back a unique key which you can use later to reterive that content. Method of storing information so that it may be retrieved based on its content.
 
 What is `.git` repository?
- > Is a hidden directory where Git contains all information required for version control.
-`.git` is initilaized by `git init`. `.git` contains all the inforamtion required for version control.
-`.git` contains:
-- 4 files:
-    - `HEAD` - this file points to the branch you currently have checked out
-    - `config` - project-specific configuration options
-    - `decription` - file used only by GitWeb
-    - `index` - staging area
-- 4 sub-directiories:
-    - `objects/` - all `objects` i.e stores all the content for your database (object database)
-    - `refs/` - pointers to `commit` objects in that data(`branches`, `tags`, `remotes`, and more)
-    - `info/` - keeps a global `exclude` file for ignored patterns that you don't want to track in a `.gitignore` file
-    - `hooks` - contains client or server-side hook scripts
-- 3 objects:
-    - `blob` - files
-    - `tree` - directories
-    - `commit` - reference to a `tree`, parent `commit`
-- 2 objects sub-directiories:
-    - `.git/objects/pack` - 
-    - `.git/objects/info` -
-
+ > Is a hidden directory where Git contains all information required for version control. `.git` is initilaized by `git init`. `.git` contains all the inforamtion required for version control. `.git` contains:
+> - 4 files:
+>     - `HEAD` - this file points to the branch you currently have checked out
+>     - `config` - project-specific configuration options
+>     - `decription` - file used only by GitWeb
+>     - `index` - staging area
+> - 4 sub-directiories:
+>     - `objects/` - all `objects` i.e stores all the content for your database (object database)
+>     - `refs/` - pointers to `commit` objects in that data(`branches`, `tags`, `remotes`, and more)
+>     - `info/` - keeps a global `exclude` file for ignored patterns that you don't want to track in a `.gitignore` file
+>     - `hooks` - contains client or server-side hook scripts
+> - 3 objects:
+>     - `blob` - files
+>     - `tree` - directories
+>     - `commit` - reference to a `tree`, parent `commit`
+> - 2 objects sub-directiories:
+>     - `.git/objects/pack` - 
+>     - `.git/objects/info` -
+> 
 How does Git store content? 
 > As a single file per piece of content, named with the `SHA-1` checksum of the content and its header.The subdir is named with first two characters of the `SHA-1` and the filname is the remaining 38 characters. All content is stored as `tree` or `blob` objects, `trees` corresponding to UNIX directories entries and `blobs` corresponding more or less to `inodes` or file contents.
 
@@ -36,8 +72,7 @@ git help git
 git help -av
 ```
 What are porcelain commands? 
-
-User friendly commands.
+> User friendly commands.
 
 What is a branch? 
 > A `branch` is a simple pointer or reference to the head of a line of work.
@@ -46,8 +81,7 @@ What is a working tree?
 > Equivalent to `working directory`
 
 What is a working directory? 
-> Think of working directory as a `sandbox`, where you can try changes out before committing them to your staging area(index) and then to history.
-> Working directory (also commonnly referred to as working tree).The other two trees `index` and `HEAD` store their content in an efficient but inconvenient manner inside `.git` folder. The working directory unpacks them into actual files, which makes it much easier to edit them.
+> Think of working directory as a `sandbox`, where you can try changes out before committing them to your staging area(index) and then to history. Working directory (also commonnly referred to as working tree).The other two trees `index` and `HEAD` store their content in an efficient but inconvenient manner inside `.git` folder. The working directory unpacks them into actual files, which makes it much easier to edit them.
 
 What is worktree?
 
@@ -237,6 +271,23 @@ What is a SHA-1 hash?
 
 What is fast-forward merge?
 >
-
 What is non fast-forward merge?
->
+
+What is master?
+> `master` is the state of master branch on local repository
+
+What is main?
+> `main` is a local branch
+
+What is origin/master?
+> `origin/master` is the state of master branch on the remote repository
+
+What is origin/main?
+> is a remote trakcing branch(which is a local copy of the branch named `main` on the remote `origin`
+> `origin/main` branch is local.
+
+What is origin/HEAD?
+> `origin/HEAD` is the default branch for the remote named `origin`
+
+What is origin?
+> `origin` is a remote
