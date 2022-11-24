@@ -22,15 +22,15 @@
 > 2. You selectively stage just those changes you want to be part of your next commit, which adds only those changes to the staging area.
 > 3. You do a commit, which takes the files as they are in the staging area and stores that snapshot permanently in your Git repository.
 
-**What are the 3 places where `git config` variables can be stored? **
+**What are the 3 places where `git config` variables can be stored?**
 > `[path]/etc/gitconfig` file - contains values applied to every user on the system and all their repositories.`git config --system`
 > `~/.gitconfig` or `~/.config/git/cofnig` file - personal git values to you, the user.`git config --global` (affects all of the repositories you work with on your system.
 > `config` file - inside the Git directory this is specific to that single repository. `git config --local`
 
-**> What is the command to view all settings and where they are coming from ? **
+**What is the command to view all settings and where they are coming from?**
 > `git config --list --show-origin`
 
-**> How do you query Git as to the origin for a value to tel you which configuration file had the final say in setting that value?**
+**How do you query Git as to the origin for a value to tel you which configuration file had the final say in setting that value?**
 > `git cofnig --show-origin rerer.autoUpdate`
 
 **What is a DVCS?**
@@ -39,7 +39,7 @@
 **What is a patch?**
 > Differences between files.
 
-**What does a content-addressable filesystem mean? **
+**What does a content-addressable filesystem mean?**
 > This means that at the core of Git is a simple key-value data store i.e you can insert any kind of content into a Git repository, for which Git will hand you back a unique key which you can use later to reterive that content. Method of storing information so that it may be retrieved based on its content.
 
 **What is `.git` repository?**
@@ -62,7 +62,7 @@
 >     - `.git/objects/pack` - 
 >     - `.git/objects/info` -
 > 
-**How does Git store content? **
+**How does Git store content?**
 > As a single file per piece of content, named with the `SHA-1` checksum of the content and its header.The subdir is named with first two characters of the `SHA-1` and the filname is the remaining 38 characters. All content is stored as `tree` or `blob` objects, `trees` corresponding to UNIX directories entries and `blobs` corresponding more or less to `inodes` or file contents.
 
 **What are plumbing commands?**
@@ -71,21 +71,21 @@
 git help git
 git help -av
 ```
-**What are porcelain commands? **
+**What are porcelain commands?**
 > User friendly commands.
 
-**What is a branch? **
+**What is a branch?**
 > A `branch` is a simple pointer or reference to the head of a line of work.
 
-**What is a working tree? **
+**What is a working tree?**
 > Equivalent to `working directory`
 
-**What is a working directory? **
+**What is a working directory?**
 > Think of working directory as a `sandbox`, where you can try changes out before committing them to your staging area(index) and then to history. Working directory (also commonnly referred to as working tree).The other two trees `index` and `HEAD` store their content in an efficient but inconvenient manner inside `.git` folder. The working directory unpacks them into actual files, which makes it much easier to edit them.
 
 **What is worktree?**
 
-**What is a repository? **
+**What is a repository?**
 
 **What is a local repository?**
 
@@ -103,7 +103,7 @@ git help -av
 **What is a tag object?**
 > `tag` object is fourth object type in Git. A `tag` object is very much like `commit` object - it contains a tagger, a date, a message and a pointer. The main difference is that `tag` object generally points to a `commit` rather than a `tree`. Its like a `branch` reference, but it never moves - it always points to the same `commit` but gives it a friendlier name.
 
-**What are the two types of `tag`? **
+**What are the two types of `tag`?**
 > - `annotated` - more complex, git creates a `tag` object and then writes a `reference` to point to it rather than directly to the `commit` (created by using `git tag -a <>` `lightweight` - a `reference` that never moves.
 
 **What is master?**
@@ -168,7 +168,7 @@ git help -av
 **What is tree?**
 > Think of Git being a content manager of three different trees. Trees here means collection of files not specifically the data structure.
 
-**What are the three trees (not tree object/data structure) git manages and manipulates? **
+**What are the three trees (not tree object/data structure) git manages and manipulates?**
 > `HEAD` - last commit snapshot, next parent
 > `index` - proposed next commit snapshot
 > `working directory` - sandbox
@@ -185,7 +185,7 @@ git help -av
 **How does Git create a `tree` object?**
 > Git creates a `tree` by taking the state of your staging area or `index` and writing a series of `tree` objects from it. So, to create a `tree` object you first have to set up an index by staging some files.
 
-**What are the only 3 file modesi valide for files(`blobs`) in Git? **
+**What are the only 3 file modesi valide for files(`blobs`) in Git?**
 > - `100644` - normal file
 > - `100755` - executable file
 > - `120000` - symbolic link
@@ -216,15 +216,15 @@ When you run these commands:
 **How to see the history of your repository reachable from a `commit` say `1a41aa`?**
 > Run `git log 1a41aa`
 
-**What happens when you run `git branch <branch>` ? **
+**What happens when you run `git branch <branch>` ?**
 >Git runs `update-ref` command to add the `SHA-1` of the last `commit` of the `branch` you're on into whatever new `reference` you want to create.
 
-**How does Git know the `SHA-1` of the last `commit` when you run `git branch <branch>` ? **
+**How does Git know the `SHA-1` of the last `commit` when you run `git branch <branch>` ?**
 > `HEAD` file.
 > `HEAD` file is a symbolic `reference` to the `branch` you're currenlty on.
 > A symboic reference, unlike a normal reference, it contains a pointer to another `reference`
 
-**What is a `detached HEAD` ? **
+**What is a `detached HEAD` ?**
 > In cases ehre the `HEAD` file may contain the `SHA-1` value of a git `object`. This happens when you `checkout` a `tag`, `commit`, or a `remote branch` which puts your repository in a `detached HEAD` state.
 
 **What happens when you run `git commit`?**
@@ -233,7 +233,7 @@ When you run these commands:
 **How to read the value of your `HEAD` ?**
 > Run `git symboic-ref HEAD`
 
-**What are the 3 types of `references` ? **
+**What are the 3 types of `references` ?**
 > Run command `git show-ref`
 > - `refs/heads`
 > - `refs/tags`
@@ -248,7 +248,7 @@ When you run these commands:
 **What is a loose object?**
 > The initial format in which Git saves objects on disk.
 
-**What are dangling object? **
+**What are dangling object?**
 > The `blob` objects that aren't pointed to by a `commit`.
 
 **What is a packfile(`.pack`) ?**
