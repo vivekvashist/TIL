@@ -291,3 +291,15 @@ What is origin/HEAD?
 
 What is origin?
 > `origin` is a remote
+
+How do you obtain a Git repository on your local machine?
+> 1. Take a local project directory that is not under VC, and turn it into Git repository
+> 2. Clone an existing Git repository from elsewhere
+
+What happens when you run `git clone <url>`?
+> Git receives a full copy of nearly all data taht the server has, every version of every file for the history of the project is pulled down by default and checks out a `working copy` of the latest version.
+
+What is a hunk?
+> When comparing two files, diff finds sequences of lines common to both files, interspersed with groups of differing lines called hunks.
+> Each hunk shows one area where the files differ. 
+> more details -  http://www.gnu.org/software/diffutils/manual/html_node/Hunks.html
