@@ -19,8 +19,8 @@ Inspired by [simonw/til](https://github.com/simonw/til), which I heard about on 
 
 ## python
 
-## vim
-* [Apply macro to a set of lines in vim](https://github.com/vivekvashist/TIL/blob/main/vim/apply_macro_to_a_set_of_lines.md)
+## neovim
+* [Apply macro to a set of lines in neovim](https://github.com/vivekvashist/TIL/blob/main/vim/apply_macro_to_a_set_of_lines.md)
 
 ## SQLite
 
