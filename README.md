@@ -4,7 +4,7 @@ My Today I Learned snippets.
 
 Inspired by [simonw/til](https://github.com/simonw/til), which I heard about on [Python Bytes Podcast](https://pythonbytes.fm/).
 
-5 TILs so far.
+6 TILs so far.
 
 ## git
 
@@ -12,6 +12,9 @@ Inspired by [simonw/til](https://github.com/simonw/til), which I heard about on 
 * [Show tracked and untracked files](https://github.com/vivekvashist/TIL/blob/main/git/show_tracked_and_untracked_files.md)
 * [Git terms](https://github.com/vivekvashist/TIL/blob/main/git/git_terms.md)
 * [How do I ? in Git](https://github.com/vivekvashist/TIL/blob/main/git/how_do_i_in_git.md)
+* [How to rename a directory in Git](https://github.com/vivekvashist/TIL/blob/main/git/remame_directory_in_git.md)
+
+-rw-r--r--   1 vivekvashist  staff   208B 27 Nov 20:01 remame_directory_in_git.md
 
 ## linux
 
