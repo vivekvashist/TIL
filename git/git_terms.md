@@ -10,12 +10,16 @@
 
 **What are the 3 main states that files can reside in Git?**
 > `modified` - means you have changed the file but have not committed it to your database yet.If it was changed since it was checked out but has not been staged, it is modified.
+
 > `staged` - means you have maked a modified file in its current version to go into your next commit snapshot. If it has been modified and was added to the staging area it is staged.
+
 > `committed` - means that the data is safely stored in your local database. If a particular version of a file is in the Git directory, it is considered committed.
 
 **What are the 3 main sections of a Git project?**
 > `working tree` - is a single checkout of one version of the project.These files are pulled out of the compressed database in the Git directory and placed on disk for you to use of modify.
+
 > `staging area` - is a file,(technical name is `index`) contained in your Git directory, that stores information about what will go into your next commit.
+
 > `Git directory` - is where Git stores the metadata and object database for your project.This is what gets copied when you `clone` a repository from another computer.
 
 **What is the basic git workflow?**
