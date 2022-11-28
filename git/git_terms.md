@@ -16,7 +16,7 @@
 > `committed` - means that the data is safely stored in your local database. If a particular version of a file is in the Git directory, it is considered committed.
 
 **What are the 3 main sections of a Git project?**
-> `working tree` - is a single checkout of one version of the project.These files are pulled out of the compressed database in the Git directory and placed on disk for you to use of modify.
+> `working tree` - is a single checkout of one version of the project.These files are pulled out of the compressed database in the Git directory and placed on disk for you to use and modify.
 
 > `staging area` - is a file,(technical name is `index`) contained in your Git directory, that stores information about what will go into your next commit.
 
@@ -24,18 +24,21 @@
 
 **What is the basic git workflow?**
 > 1. You modifiy files in your `working tree`
+
 > 2. You selectively stage just those changes you want to be part of your next commit, which adds only those changes to the staging area.
+
 > 3. You do a commit, which takes the files as they are in the staging area and stores that snapshot permanently in your Git repository.
 
 **What are the 3 places where `git config` variables can be stored?**
 > `[path]/etc/gitconfig` file - contains values applied to every user on the system and all their repositories.`git config --system`
-> `~/.gitconfig` or `~/.config/git/cofnig` file - personal git values to you, the user.`git config --global` (affects all of the repositories you work with on your system.
+
+> `~/.gitconfig` or `~/.config/git/config` file - personal git values to you, the user.`git config --global` (affects all of the repositories you work with on your system.
 > `config` file - inside the Git directory this is specific to that single repository. `git config --local`
 
-**What is the command to view all settings and where they are coming from?**
+**What is the command to view all config settings and where they are coming from?**
 > `git config --list --show-origin`
 
-**How do you query Git as to the origin for a value to tel you which configuration file had the final say in setting that value?**
+**How do you query Git as to the origin for a value to tell you which configuration file had the final say in setting that value?**
 > `git cofnig --show-origin rerer.autoUpdate`
 
 **What is a DVCS?**
@@ -49,35 +52,47 @@
 
 **What is `.git` repository?**
  > Is a hidden directory where Git contains all information required for version control. `.git` is initilaized by `git init`. `.git` contains all the inforamtion required for version control. `.git` contains:
+
 > - 4 files:
+
 >     - `HEAD` - this file points to the branch you currently have checked out
+
 >     - `config` - project-specific configuration options
+
 >     - `decription` - file used only by GitWeb
+
 >     - `index` - staging area
+
 > - 4 sub-directiories:
+
 >     - `objects/` - all `objects` i.e stores all the content for your database (object database)
+
 >     - `refs/` - pointers to `commit` objects in that data(`branches`, `tags`, `remotes`, and more)
+
 >     - `info/` - keeps a global `exclude` file for ignored patterns that you don't want to track in a `.gitignore` file
+
 >     - `hooks` - contains client or server-side hook scripts
+
 > - 3 objects:
 >     - `blob` - files
 >     - `tree` - directories
 >     - `commit` - reference to a `tree`, parent `commit`
+
 > - 2 objects sub-directiories:
->     - `.git/objects/pack` - 
->     - `.git/objects/info` -
+>     - `.git/objects/pack`
+>     - `.git/objects/info`
 > 
 **How does Git store content?**
 > As a single file per piece of content, named with the `SHA-1` checksum of the content and its header.The subdir is named with first two characters of the `SHA-1` and the filname is the remaining 38 characters. All content is stored as `tree` or `blob` objects, `trees` corresponding to UNIX directories entries and `blobs` corresponding more or less to `inodes` or file contents.
 
 **What are plumbing commands?**
-> Low level commands that were designed to be chanined UNIX-style or called from scripts.
+> Low level commands that were designed to be chanined in UNIX-style or called from scripts.
 ```python
 git help git
 git help -av
 ```
 **What are porcelain commands?**
-> User friendly commands.
+> User friendly Git commands.
 
 **What is a branch?**
 > A `branch` is a simple pointer or reference to the head of a line of work.
@@ -103,7 +118,8 @@ git help -av
 
 **What is the index?**
 > `index` is your proposed next commit.This is also refered to as staging area as this is what git looks at when you run `git commit`
-> Git polulates this index with a list of all file contents that werrre last checked out into your working directory and what they looked like when they were orginally checked out.When you replace some of those files with new versions of them, and `git commit` converts that into the tree for new commit.`git ls-files -s` shows what your index currently looks like.The index is not technically a tree structure - its implementd as a flattened manifest but for our purposes its close enough.
+> Git polulates this index with a list of all file contents that were last checked out into your working directory and what they looked like when they were orginally checked out.When you replace some of those files with new versions of them, and `git commit` converts that into the tree for new commit.
+`git ls-files -s` shows what your index currently looks like.The index is not technically a tree structure - its implementd as a flattened manifest but for our purposes its close enough.
 
 **What is a tag object?**
 > `tag` object is fourth object type in Git. A `tag` object is very much like `commit` object - it contains a tagger, a date, a message and a pointer. The main difference is that `tag` object generally points to a `commit` rather than a `tree`. Its like a `branch` reference, but it never moves - it always points to the same `commit` but gives it a friendlier name.
@@ -165,7 +181,7 @@ git help -av
 > A simple name for a file in which `SHA-1` value is stored so that you don't have to use `SHA-1` value.These are stored under `.git/refs` directory
 
 **What is reflog?**
-> `reflog` is a local commandd
+> `reflog` is a local command
 
 **What is refspec?**
 
@@ -175,8 +191,11 @@ git help -av
 > Think of Git being a content manager of three different trees. Trees here means collection of files not specifically the data structure.
 
 **What are the three trees (not tree object/data structure) git manages and manipulates?**
+
 > `HEAD` - last commit snapshot, next parent
+
 > `index` - proposed next commit snapshot
+
 > `working directory` - sandbox
 
 **What is a tree object?**
@@ -191,9 +210,11 @@ git help -av
 **How does Git create a `tree` object?**
 > Git creates a `tree` by taking the state of your staging area or `index` and writing a series of `tree` objects from it. So, to create a `tree` object you first have to set up an index by staging some files.
 
-**What are the only 3 file modesi valide for files(`blobs`) in Git?**
+**What are the only 3 file modes valide for files(`blobs`) in Git?**
 > - `100644` - normal file
+
 > - `100755` - executable file
+
 > - `120000` - symbolic link
 
 **What does `git write-tree` command do?**
@@ -205,8 +226,11 @@ To read `trees` into your staging area.
 
 **What happens when you run `git add` and `git commit` ?**
 > `git add` - is used to begin tracking new files , to stage files, marking merge-conflicted files as resolved
+
 > `git add` - think `add precisely this content to the next commit` rather then `add this file to the project`
+
 > git stages file at it is when you run `git add` i.e a file can be listed as both staged and unstaged
+
 > if you modify a file after you run `git add` you will have to run `git add` again to stage the latest version of the file
 
 When you run these commands:
@@ -214,11 +238,6 @@ When you run these commands:
 >    - Git updates index
 >    - Git writes out `trees` 
 >    - Git writes `commit` objects that reference the top-level `trees` and the `commits` that came immediately befor them.
-
-**What are the three main Git objects?**
-> - the `blob`
-> - the `tree`
-> - the `commit`
 
 **How does the object storage work?**
 > A header is stored with every object you commit to your Git object database.
@@ -231,14 +250,16 @@ When you run these commands:
 
 **How does Git know the `SHA-1` of the last `commit` when you run `git branch <branch>` ?**
 > `HEAD` file.
+
 > `HEAD` file is a symbolic `reference` to the `branch` you're currenlty on.
+
 > A symboic reference, unlike a normal reference, it contains a pointer to another `reference`
 
 **What is a `detached HEAD` ?**
-> In cases ehre the `HEAD` file may contain the `SHA-1` value of a git `object`. This happens when you `checkout` a `tag`, `commit`, or a `remote branch` which puts your repository in a `detached HEAD` state.
+> In cases where the `HEAD` file may contain the `SHA-1` value of a git `object`. This happens when you `checkout` a `tag`, `commit`, or a `remote branch` which puts your repository in a `detached HEAD` state.
 
 **What happens when you run `git commit`?**
-> Git create the `commit` object, specifying the parent of the that `commit` object to be whatever `SHA-1` value the `reference` in `HEAD` points to.
+> Git creates the `commit` object, specifying the parent of the that `commit` object to be whatever `SHA-1` value the `reference` in `HEAD` points to.
 
 **How to read the value of your `HEAD` ?**
 > Run `git symboic-ref HEAD`
@@ -246,7 +267,9 @@ When you run these commands:
 **What are the 3 types of `references` ?**
 > Run command `git show-ref`
 > - `refs/heads`
+
 > - `refs/tags`
+
 > - `refs/remotes`
 
 **What is a `remote` reference?**
@@ -261,18 +284,20 @@ When you run these commands:
 **What are dangling object?**
 > The `blob` objects that aren't pointed to by a `commit`.
 
-**What is an orphan or dangling commig?**
+**What is an orphan or dangling commit?**
 > A `commit` that is not reachable by a `branch`
 
 **What is a packfile(`.pack`) ?**
-> Git packs several `loose` objects into a single binary file called `packfile` in oder to save space and be more efficient. git does this automatically or you could use `git gc` The `packfile` is a single file containing the contents of all the objects that were removed from your filesystem.
+> Git packs several `loose` objects into a single binary file called `packfile` in order to save space and be more efficient. git does this automatically or you could use `git gc` The `packfile` is a single file containing the contents of all the objects that were removed from your filesystem.
 
 **What is a `.idx` file?**
 > The index is a file that contains offsets into the packfile so you can quickly seek to a specific object.
 
 **How does git pack objects?**
 > Git looks for files that are named and sized similarly, and stores just the deltas from one version of the file to the next.
+
 > Run `git verify-pack` to look into a packfile
+
 > Check out that the second version of the file is the one that is stored intact, whereas the original version is stored as a delta - this is becausse you're most likely to need faster access to the most recent version of the file.
 
 **What is `origin main` vs `origin/main`?**
@@ -280,7 +305,7 @@ When you run these commands:
 **What is `origin master` vs `origin/master`?**
 
 **What is a SHA-1 hash?**
-> Individual fingerprint for content.
+> Individual fingerprint for the content.
 
 **What is fast-forward merge?**
 >
@@ -298,6 +323,7 @@ When you run these commands:
 
 **What is origin/main?**
 > is a remote trakcing branch(which is a local copy of the branch named `main` on the remote `origin`
+
 > `origin/main` branch is local.
 
 **What is origin/HEAD?**
@@ -311,20 +337,25 @@ When you run these commands:
 > 2. Clone an existing Git repository from elsewhere
 
 **What happens when you run `git clone <url>`?**
-> Git receives a full copy of nearly all data taht the server has, every version of every file for the history of the project is pulled down by default and checks out a `working copy` of the latest version.
+> Git receives a full copy of nearly all data that the server has, every version of every file for the history of the project is pulled down by default and checks out a `working copy` of the latest version.
+
 > When you clone a repository, all of the your files will be tracked and unmodified because Git just checked them out and you haven't edited anything
 
 **What is a hunk?**
-> When comparing two files, diff finds sequences of lines common to both files, interspersed with groups of differing lines called hunks.
+> When comparing two files, diff finds sequences of lines common to both files, interspersed with groups of differing lines called hunks
+
 > Each hunk shows one area where the files differ. 
+
 > more details -  http://www.gnu.org/software/diffutils/manual/html_node/Hunks.html
 
 **What are untracked files?**
-> File that are in you directory that but have not been added to `.git` repository to be tracked
+> Files that are in you directory that but have not been added to `.git` repository to be tracked
 
 **What are the three modes of Git reset command?**
 > `--hard`
+
 > `--mixed` (default)
+
 > `--soft`
 
 **What is Git revert?**
@@ -335,12 +366,14 @@ When you run these commands:
 
 **When to use ~ vs ^?**
 > Use `~` most of the time - to go back a number of generations, usually what you want. Tilde `~` is almost linear in appearence and wants to go backward in a straight line.
+
 > Use `^` on merge commits - because they have two or more(immediate) parents. Caret `^` suggests an interesting segment of a tree or a fork in the road
 
 **What are the two states that a file can be in a `working directory`?**
 > `tracked` - (are the files that git knows about) tracked files are files that were in the last snapshot, as well as newly staged files, any newly staged files they can be unmodified, modified or staged.
-> `untracked` - any files that were not in your last snapshot and are not in your staging area. When you clone a  
-> as you edit files git sees them as modified because you've changed them since your last commit.
+
+> `untracked` - any files that were not in your last snapshot and are not in your staging area. When you clone as you edit files git sees them as modified because you've changed them since your last commit.
+
 > Untracked means Git sees a file you didn't have in the previous snapshot(commit), and which hasn't yet been staged,git won't start including it in your commit snapshot until you explicitly tell it to do so.
 
 **What does `working tree clean` mean's when you run `git clone` on a freshly cloned project?**
@@ -350,21 +383,32 @@ When you run these commands:
 > `git status` command `Changed to be committed` shows the file is not tracked and staged to be committed.
 
 **In `git status` what does `Changes not staged for commit` mean?**
-> If a file appears under `Change not staged for commit` section means that is tracked has been modified in the working directory but not yet staged.
+> If a file appears under `Change not staged for commit` section means that is tracked and has been modified in the working directory but not yet staged.
 
 **what does `git status -s` mean?**
 > `git status -s` is more simplified version of `git status` command
+
 > `git status -s` has to two columns, LHS is status of staging area and RHS is the status of working tree
+
 > `??` - new files that aren't tracked - untracked
+
 > `A ` - `Added` - new files that have been added to staging area or added to index
+
 > `M ` - modifiled and stagd
 
-**What questions did `git diff` answer?**
+**What questions does `git diff` answer?**
 > What have you changed but not yet staged?
+
 > What have you staged that you are about to commit?
+
 > `git status` show the files listing 
+
 > `git diff` - shows the exact lines added and removed - the patch as it were.
+
 > `git diff` - compares whats is in your working directory with whats in your staging area
+
 > `git diff --staged` - compares your staged changes to your last commit
+
 > `git diff` - by itself doesn't show all changes made since your last commit - only changes that are still unstaged.If you have staged all your changes `git diff` will give you no output.
+
 > `git diff --cached` - `--staged` and `--cached` are synonyms i.e what have you staged so far
