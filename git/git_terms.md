@@ -4,7 +4,7 @@
 > Git thinks about its data more like a `stream of snapshots`
 > Git basically takes a picture of what all your files look like at that moment and stores a `reference` to that snapshot.To be efficient, if files have not changed, Git doesn't store the file again, just a link to the previous identical file it has already stored.
 > Nearly every opteration in Git is local.
-> Everything in git is checksumed before it is stored and then referred to by that checksum.This means, it is impossible to change the contents of any file/directory without Git knowing about it.You can't lose information in transit or get file corruption without Git being able to detect it.The mechanism that Git uses for this checksumming is called SHA-1 hash.This has is calculated based on the contents of a file or directory structure in Git.
+> Everything in git is checksumed before it is stored and then referred to by that checksum.This means, it is impossible to change the contents of any file/directory without Git knowing about it.You can't lose information in transit or get file corruption without Git being able to detect it.The mechanism that Git uses for this checksumming is called SHA-1 hash.This hash is calculated based on the contents of a file or directory structure in Git.
 > Git stores everything in its database not by file name but by the hash value of its contents.
 > Nearly all git actions only add data to git database.It is hard to get the system to do anything that is not undoable or to make it erase data in anyway. Once you `commit` a snapshot into Git it is very difficutlt to lose, especially if you regularly push your database to another repository.
 
