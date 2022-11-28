@@ -1,4 +1,5 @@
 ****What is git?****
+> git is just a fancy key value store. The keys are SHA-1 hash of the contents of the objects and the values are content
 > A stupid content tracker. Git is fundamentally a content-addressable filesystem with a VCS user interface written on top of it.Git is a Distributed Version Control System(DVCS).Git is not a delta-based version control, Git thinks of its data more like a series of snapshots of a miniature filesystem.
 > Git thinks about its data more like a `stream of snapshots`
 > Git basically takes a picture of what all your files look like at that moment and stores a `reference` to that snapshot.To be efficient, if files have not changed, Git doesn't store the file again, just a link to the previous identical file it has already stored.
@@ -160,6 +161,7 @@ git help -av
 > A simple name for a file in which `SHA-1` value is stored so that you don't have to use `SHA-1` value.These are stored under `.git/refs` directory
 
 **What is reflog?**
+> `reflog` is a local commandd
 
 **What is refspec?**
 
@@ -251,6 +253,9 @@ When you run these commands:
 **What are dangling object?**
 > The `blob` objects that aren't pointed to by a `commit`.
 
+**What is an orphan or dangling commig?**
+> A `commit` that is not reachable by a `branch`
+
 **What is a packfile(`.pack`) ?**
 > Git packs several `loose` objects into a single binary file called `packfile` in oder to save space and be more efficient. git does this automatically or you could use `git gc` The `packfile` is a single file containing the contents of all the objects that were removed from your filesystem.
 
@@ -271,6 +276,7 @@ When you run these commands:
 
 **What is fast-forward merge?**
 >
+
 **What is non fast-forward merge?**
 
 **What is master?**
@@ -303,3 +309,21 @@ When you run these commands:
 > When comparing two files, diff finds sequences of lines common to both files, interspersed with groups of differing lines called hunks.
 > Each hunk shows one area where the files differ. 
 > more details -  http://www.gnu.org/software/diffutils/manual/html_node/Hunks.html
+
+**What are untracked files?**
+> File that are in you directory that but have not been added to `.git` repository to be tracked
+
+**What are the three modes of Git reset command?**
+> `--hard`
+> `--mixed` (default)
+> `--soft`
+
+**What is Git revert?**
+
+**What is Git reset?**
+
+**What is `filter-branch`?**
+
+**When to use ~ vs ^?**
+> Use `~` most of the time - to go back a number of generations, usually what you want. Tilde `~` is almost linear in appearence and wants to go backward in a straight line.
+> Use `^` on merge commits - because they have two or more(immediate) parents. Caret `^` suggests an interesting segment of a tree or a fork in the road
