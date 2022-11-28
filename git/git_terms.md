@@ -200,6 +200,10 @@ git help -av
 To read `trees` into your staging area.
 
 **What happens when you run `git add` and `git commit` ?**
+> `git add` - is used to begin tracking new files , to stage files, marking merge-conflicted files as resolved
+> `git add` - think `add precisely this content to the next commit` rather then `add this file to the project`
+> git stages file at it is when you run `git add` i.e a file can be listed as both staged and unstaged
+> if you modify a file after you run `git add` you will have to run `git add` again to stage the latest version of the file
 
 When you run these commands:
 >    - Git stores `blobs` for the files that have changed
@@ -304,6 +308,7 @@ When you run these commands:
 
 **What happens when you run `git clone <url>`?**
 > Git receives a full copy of nearly all data taht the server has, every version of every file for the history of the project is pulled down by default and checks out a `working copy` of the latest version.
+> When you clone a repository, all of the your files will be tracked and unmodified because Git just checked them out and you haven't edited anything
 
 **What is a hunk?**
 > When comparing two files, diff finds sequences of lines common to both files, interspersed with groups of differing lines called hunks.
@@ -327,3 +332,35 @@ When you run these commands:
 **When to use ~ vs ^?**
 > Use `~` most of the time - to go back a number of generations, usually what you want. Tilde `~` is almost linear in appearence and wants to go backward in a straight line.
 > Use `^` on merge commits - because they have two or more(immediate) parents. Caret `^` suggests an interesting segment of a tree or a fork in the road
+
+**What are the two states that a file can be in a `working directory`?**
+> `tracked` - (are the files that git knows about) tracked files are files that were in the last snapshot, as well as newly staged files, any newly staged files they can be unmodified, modified or staged.
+> `untracked` - any files that were not in your last snapshot and are not in your staging area. When you clone a  
+> as you edit files git sees them as modified because you've changed them since your last commit.
+> Untracked means Git sees a file you didn't have in the previous snapshot(commit), and which hasn't yet been staged,git won't start including it in your commit snapshot until you explicitly tell it to do so.
+
+**What does `working tree clean` mean's when you run `git clone` on a freshly cloned project?**
+> This means you have a clean working directory, none of your tracked files are modified.And there are no untacked files
+
+**How can you tell that the file is staged?**
+> `git status` command `Changed to be committed` shows the file is not tracked and staged to be committed.
+
+**In `git status` what does `Changes not staged for commit` mean?**
+> If a file appears under `Change not staged for commit` section means that is tracked has been modified in the working directory but not yet staged.
+
+**what does `git status -s` mean?**
+> `git status -s` is more simplified version of `git status` command
+> `git status -s` has to two columns, LHS is status of staging area and RHS is the status of working tree
+> `??` - new files that aren't tracked - untracked
+> `A ` - `Added` - new files that have been added to staging area or added to index
+> `M ` - modifiled and stagd
+
+**What questions did `git diff` answer?**
+> What have you changed but not yet staged?
+> What have you staged that you are about to commit?
+> `git status` show the files listing 
+> `git diff` - shows the exact lines added and removed - the patch as it were.
+> `git diff` - compares whats is in your working directory with whats in your staging area
+> `git diff --staged` - compares your staged changes to your last commit
+> `git diff` - by itself doesn't show all changes made since your last commit - only changes that are still unstaged.If you have staged all your changes `git diff` will give you no output.
+> `git diff --cached` - `--staged` and `--cached` are synonyms i.e what have you staged so far
