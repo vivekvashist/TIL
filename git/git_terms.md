@@ -23,11 +23,11 @@
 > `Git directory` - is where Git stores the metadata and object database for your project.This is what gets copied when you `clone` a repository from another computer.
 
 **What is the basic git workflow?**
-1. You modifiy files in your `working tree`
+>1. You modifiy files in your `working tree`
 
-2. You selectively stage just those changes you want to be part of your next commit, which adds only those changes to the staging area.
+>2. You selectively stage just those changes you want to be part of your next commit, which adds only those changes to the staging area.
 
-3. You do a commit, which takes the files as they are in the staging area and stores that snapshot permanently in your Git repository.
+>3. You do a commit, which takes the files as they are in the staging area and stores that snapshot permanently in your Git repository.
 
 **What are the 3 places where `git config` variables can be stored?**
 > `[path]/etc/gitconfig` file - contains values applied to every user on the system and all their repositories.`git config --system`
