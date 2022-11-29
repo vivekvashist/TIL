@@ -96,6 +96,7 @@ git help -av
 
 **What is a branch?**
 > A `branch` is a simple pointer or reference to the head of a line of work.
+> Branches are pointer to commits
 
 **What is a working tree?**
 > Equivalent to `working directory`
@@ -115,6 +116,7 @@ git help -av
 
 **What is a blob object?**
 > Blob means a sequence of bytes. A Git blob (binary large object) is the object type used to store the contents of each file in a repository.
+> a blob contains file contents
 
 **What is the index?**
 > `index` is your proposed next commit.This is also refered to as staging area as this is what git looks at when you run `git commit`
@@ -141,6 +143,7 @@ git help -av
 
 **What is a `commit` object?**
 > It specifies the top-level `tree` for the snapshot of the project a that point, the parent `commits` if any, the author/committer information, a blank line and then the `commit` message. Each `commit` ojbect points to snapshot `tree`.
+> commits are NOT diffs!
 
 **What is heads(refs/heads/main)?**
 
@@ -200,6 +203,10 @@ git help -av
 
 **What is a tree object?**
 > Solves the problem of storing the filename and also allows you to store a group of files together. A single `tree` object contains one or more entries, each of which is a the `SHA-1` hash or a `blob` or `subtree` with its associated mode, type and filename.
+> A tree contains folder contents, contains names of files and folders inside
+> contains blobs (files) and trees(folders)
+> includes file mode (unix file permissions)
+
 
 **What does `git cat-file` command do?**
 > Command to inspect Git objects.
@@ -412,3 +419,56 @@ When you run these commands:
 > `git diff` - by itself doesn't show all changes made since your last commit - only changes that are still unstaged.If you have staged all your changes `git diff` will give you no output.
 
 > `git diff --cached` - `--staged` and `--cached` are synonyms i.e what have you staged so far
+
+**What does a commit record?**
+> A commit records the snapshot you setup in your staging area.Every time you perform a commit you're recording a snapshot of your project that you can rever to or compare to later.
+
+**How can you remove a file from Git?**
+> To remove a file from Git, you have to remove it from your tracked files(more accurately, remove it from your staging area) and then commit.
+> `git rm` command does that and alro removes the file from your working directory so that you don't see it as untracked file next time around.
+> If you simply remove the file from your working directory, it shows up under the "Changes not staged for commit"(that is unstaged) area of `git status` output.
+
+**How can you keep a file in your working tree but remove it from your staging area?**
+> To keep a file on your hard drive but not have Git track it anymore, this is particularly useful if you forgot to add something to your `.gitignore` and accidentally staged it, like a large log file.To do this use `git rm --cached FILENAME`
+> You can pass files, directories and file-glob patterns to `git rm` 
+
+**How do you move files in Git?**
+> Git doesn't explicitly track file movement.If you rename a file in git, no metadata is stored in git that tells it you renamed the file.
+> To rename a file in git `git mv file_from file_to`
+> this is equivilant to running `git rm file` and then `git add file`
+
+**How can you show the difference (the patch output) introduced in each commit?**
+> run `git log -p 1`
+> run `git log --stat` - to see summary/abbreviated stats for each commit
+> run `git log --pretty=oneline` - useful at looking at lots of commits other options are `short`, `full`, `fuller`
+> run `git log --pretty=format:"%h -%an, %ar : %s"` - allows you to specify your own log output format, useful when you're generating output for machine parsing
+> run `git log --graph` - nice ASCII graph showing your branch and merge history
+> run `git log --since=2.weeks` - time limiting options such as `--since` and `--until`
+> run `git log -S function_name` - git's "pickaxe" which takes a string and shows only those commits that changed the number of occurrences of that string.
+> run `git log -- [path/to/file]` - filter as a path to limit the log output to commits that introduced a change to those files
+> run `git log --no-merges` - merge commits aren't very informattive depending your workflow
+
+**What does a commit object contain?**
+> A root tree
+> A lis tof parent commits
+> A commit message
+> An author name, email, time
+> An committer name, email, time
+
+**How does working directory, staging, committed related?**
+> [WORKING DIRECTORY] --[git add]--> [STAGING AREA] --[git commit]--> [REPOSITORY]
+
+**How do you undo if you commit too early or forge tto add some files or mess up your commit message?**
+> use `git commit --amend` - this command takes your staging area an uses it for the commit.
+> ```python
+git commit -m 'initial commit'
+git add forgotten_file
+git commit --amend
+```
+> with this you end up with a single commit - the second commit replaces the results of the first
+> only amend commits that are still local and have not been pushed somewhere.
+> amending last commit is not fixing it as in replacing it entirely with a new improved commit that pushes the old commit out of the way and puts a new commit in its place.Effectively as if previous never happend and it won't show up in your repository history.
+
+**how to unmodify a modified file with `git restore`?**
+> run `git restore --staged <file>
+> Note: `git restore` is a dangerous command any local changes you made to that file are gone. Git replaces the file with the last staged or committed version
