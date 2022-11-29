@@ -35,9 +35,9 @@
 **What is the basic git workflow?**
 
 >1. You modifiy files in your `working tree`
-
+>
 >2. You selectively stage just those changes you want to be part of your next commit, which adds only those changes to the staging area.
-
+>
 >3. You do a commit, which takes the files as they are in the staging area and stores that snapshot permanently in your Git repository.
 
 **What are the 3 places where `git config` variables can be stored?**
@@ -103,7 +103,9 @@
 
 **How does Git store content?**
 
-> As a single file per piece of content, named with the `SHA-1` checksum of the content and its header.The subdir is named with first two characters of the `SHA-1` and the filname is the remaining 38 characters. All content is stored as `tree` or `blob` objects, `trees` corresponding to UNIX directories entries and `blobs` corresponding more or less to `inodes` or file contents.
+> As a single file per piece of content, named with the `SHA-1` checksum of the content and its header.The subdir is named with first two characters of the `SHA-1` and the filname is the remaining 38 characters.
+>  
+> All content is stored as `tree` or `blob` objects, `trees` corresponding to UNIX directories entries and `blobs` corresponding more or less to `inodes` or file contents.
 
 **What are plumbing commands?**
 
@@ -119,6 +121,7 @@ git help -av
 **What is a branch?**
 
 > A `branch` is a simple pointer or reference to the head of a line of work.
+> 
 > Branches are pointer to commits
 
 **What is a working tree?**
