@@ -1,5 +1,5 @@
 
-### update existing list of packages
+##### update existing list of packages
 
 > ❯❯❯ sudo apt update
  ```python
@@ -30,7 +30,7 @@
  3 packages can be upgraded. Run 'apt list --upgradable' to see them.
  ```
 
-### install prerequestite packages so let `apt` use packages over HTTPS
+##### install prerequestite packages so let `apt` use packages over HTTPS
 > ❯❯❯ sudo apt install apt-transport-https ca-certificates curl software-properties-common
  ```python
  Reading package lists... Done
@@ -44,14 +44,14 @@
  0 upgraded, 0 newly installed, 0 to remove and 3 not upgraded.
  ```
 
-### add GPG key for the offical docker repo to your system
+##### add GPG key for the offical docker repo to your system
 > ❯❯❯ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 ```python
 Warning: apt-key is deprecated. Manage keyring files in trusted.gpg.d instead (see apt-key(8)).
 OK
 ```
 
-### add docker repository to APT sources
+##### add docker repository to APT sources
 > ❯❯❯ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
  ```python
  Repository: 'deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable'
@@ -77,7 +77,7 @@ OK
  W: https://download.docker.com/linux/ubuntu/dists/focal/InRelease: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
  ```
 
-### make sure you are about to install from docker repo insteead of the default ubuntu repo. Note `docker-ce` is not installed but candidate for install is from docker repo
+##### make sure you are about to install from docker repo insteead of the default ubuntu repo. Note `docker-ce` is not installed but candidate for install is from docker repo
 > ❯❯❯ apt-cache policy docker-ce
 ```python
 docker-ce:
@@ -89,7 +89,7 @@ docker-ce:
         <snip>
 ```
 
-### install docker
+##### install docker
 > ❯❯❯ sudo apt install docker-ce
  ```python
  Reading package lists... Done
@@ -174,7 +174,7 @@ docker-ce:
  No VM guests are running outdated hypervisor (qemu) binaries on this host.
 ```
 
-### check docker status 
+##### check docker status 
 > ❯❯❯ sudo systemctl status docker
 ```python
  ● docker.service - Docker Application Container Engine
@@ -190,19 +190,19 @@ docker-ce:
               └─12198 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
 ```
  
-### avoid using `sudo` for running docker command
+##### avoid using `sudo` for running docker command
 > ❯❯❯ sudo usermod -aG docker vivek
 
-### apply the new group membership
+##### apply the new group membership
 > ❯❯❯ su - vivek
 
-### check groups
+##### check groups
 > ❯❯❯ groups
  ```python
  vivek sudo docker
  ```
 
-### check if you can access and download images from Docker Hub
+##### check if you can access and download images from Docker Hub
 > ❯❯❯ docker run hello-world
 
 ```python
