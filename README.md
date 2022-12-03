@@ -4,7 +4,7 @@ My Today I Learned snippets.
 
 Inspired by [simonw/til](https://github.com/simonw/til), which I heard about on [Python Bytes Podcast](https://pythonbytes.fm/).
 
-6 TILs so far.
+7 TILs so far.
 
 ## git
 
@@ -20,8 +20,9 @@ Inspired by [simonw/til](https://github.com/simonw/til), which I heard about on 
 ## python
 
 ## neovim
-* [Apply macro to a set of lines in neovim](https://github.com/vivekvashist/TIL/blob/main/vim/apply_macro_to_a_set_of_lines.md)
+* [Apply macro to a set of lines in Neovim](https://github.com/vivekvashist/TIL/blob/main/vim/apply_macro_to_a_set_of_lines.md)
 
 ## SQLite
 
 ## docker
+* [How to install Docker on Ubuntu 22.10](https://github.com/vivekvashist/TIL/blob/main/docker/install_docker_on_ubuntu_22.10.md
