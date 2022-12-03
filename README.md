@@ -25,4 +25,4 @@ Inspired by [simonw/til](https://github.com/simonw/til), which I heard about on 
 #### SQLite
 
 #### docker
-* [How to install Docker on Ubuntu 22.10](https://github.com/vivekvashist/TIL/blob/main/docker/install_docker_on_ubuntu_22.10.md
+* [How to install Docker on Ubuntu 22.10](https://github.com/vivekvashist/TIL/blob/main/docker/install_docker_on_ubuntu_22.10.md)
