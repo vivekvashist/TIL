@@ -4,7 +4,7 @@ My Today I Learned snippets.
 
 Inspired by [simonw/til](https://github.com/simonw/til), which I heard about on [Python Bytes Podcast](https://pythonbytes.fm/).
 
-6 TILs so far.
+7 TILs so far.
 
 #### git
 
@@ -26,3 +26,4 @@ Inspired by [simonw/til](https://github.com/simonw/til), which I heard about on 
 
 #### docker
 * [How to install Docker on Ubuntu 22.10](https://github.com/vivekvashist/TIL/blob/main/docker/install_docker_on_ubuntu_22.10.md)
+* [How to install packages inside Docker](https://github.com/vivekvashist/TIL/blob/main/docker/how_to_install_packages_inside_docker_image.md)
